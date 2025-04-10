@@ -23,29 +23,43 @@ const AnimatedLetters = ({ text, baseDelay = 0 }: { text: string, baseDelay?: nu
 };
 
 const HeroSection = () => {
-  const [displayTitle, setDisplayTitle] = useState("");
-  const fullTitle = "WELCOME TO";
+  const [currentLine, setCurrentLine] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const lines = [
+    "WELCOME TO",
+    "NORTH ATLANTIC INDUSTRIES",
+    "ENGINEERING TEACHING LAB"
+  ];
   
   useEffect(() => {
     let currentIndex = 0;
     const interval = setInterval(() => {
-      if (currentIndex <= fullTitle.length) {
-        setDisplayTitle(fullTitle.substring(0, currentIndex));
+      if (currentIndex <= lines[currentLine].length) {
+        setDisplayText(lines[currentLine].substring(0, currentIndex));
         currentIndex++;
       } else {
         clearInterval(interval);
-        // Reset after a pause to restart the animation
+        
+        // Move to next line or reset to first line
         setTimeout(() => {
-          setDisplayTitle("");
-          currentIndex = 0;
-        }, 2000);
+          if (currentLine < lines.length - 1) {
+            setCurrentLine(prev => prev + 1);
+            setDisplayText("");
+          } else {
+            // Reset after finishing all lines
+            setTimeout(() => {
+              setCurrentLine(0);
+              setDisplayText("");
+            }, 1500);
+          }
+        }, 1000);
       }
-    }, 150);
+    }, 100);
     
     return () => {
       clearInterval(interval);
     };
-  }, [displayTitle]);
+  }, [currentLine, displayText]);
 
   return (
     <div className="relative bg-gray-900 overflow-hidden">
@@ -58,19 +72,13 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-start justify-center h-[500px]">
-        <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl mb-4 animate-fade-in text-shadow-subtle">
-          <span className="inline-block running-text">
-            {displayTitle}
-            <span className="animate-blink">|</span>
-          </span>
-        </h1>
-        <div className="animate-slide-in">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-2 text-gradient letter-spacing-wide">
-            NORTH ATLANTIC INDUSTRIES
-          </h2>
-          <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-8 text-3d">
-            ENGINEERING TEACHING LAB
-          </h2>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl text-shadow-subtle">
+            <span className="inline-block running-text">
+              {displayText}
+              <span className="animate-blink">|</span>
+            </span>
+          </h1>
         </div>
         <p className="text-xl text-white mb-8 max-w-xl animate-slide-in text-glow" style={{ animationDelay: '200ms' }}>
           for the next generation of innovative engineers
