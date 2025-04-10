@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Printer, CircuitBoard, FlaskConical } from 'lucide-react';
+import { AspectRatio } from './ui/aspect-ratio';
 
 const FacilityCard = ({ number, title, description, icon, details, imageUrl }: {
   number: number;
@@ -22,8 +23,16 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl }: {
         {details && <p className="text-gray-500 text-sm">{details}</p>}
       </div>
       {imageUrl && (
-        <div className="md:w-1/2">
-          <img src={imageUrl} alt={title} className="rounded-lg shadow-md" />
+        <div className="md:w-1/2 h-full flex items-center justify-center">
+          <div className="w-full max-w-md overflow-hidden">
+            <AspectRatio ratio={16 / 9} className="bg-muted">
+              <img 
+                src={imageUrl} 
+                alt={title} 
+                className="rounded-lg shadow-md object-cover w-full h-full"
+              />
+            </AspectRatio>
+          </div>
         </div>
       )}
     </div>
