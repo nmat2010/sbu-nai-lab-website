@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Calendar } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
 
 const timeSlots = [
   "9:30am",
@@ -25,10 +26,12 @@ const BookingSection = () => {
     sbuId: "",
     sbuEmail: "",
     regularEmail: "",
+    dateOfBirth: "",
+    reasonForUse: "",
     isStudent: "Yes"
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -66,7 +69,7 @@ const BookingSection = () => {
         return;
       }
     } else {
-      if (!formData.fullName || !formData.regularEmail) {
+      if (!formData.fullName || !formData.regularEmail || !formData.dateOfBirth || !formData.reasonForUse) {
         toast({
           title: "Missing Information",
           description: "Please fill in all required fields.",
@@ -90,6 +93,8 @@ const BookingSection = () => {
       sbuId: "",
       sbuEmail: "",
       regularEmail: "",
+      dateOfBirth: "",
+      reasonForUse: "",
       isStudent: "Yes"
     });
   };
@@ -156,22 +161,22 @@ const BookingSection = () => {
                   </div>
                   
                   <div>
-                    <Label>SBU Student</Label>
-                    <RadioGroup 
-                      defaultValue="Yes" 
-                      value={formData.isStudent}
-                      onValueChange={handleRadioChange}
-                      className="flex space-x-8 mt-2"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Yes" id="yes" className="text-sbu-red" />
-                        <Label htmlFor="yes">Yes</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="No" id="no" className="text-sbu-red" />
-                        <Label htmlFor="no">No</Label>
-                      </div>
-                    </RadioGroup>
+                     <Label>SBU Student</Label>
+                     <RadioGroup 
+                       defaultValue="Yes" 
+                       value={formData.isStudent}
+                       onValueChange={handleRadioChange}
+                       className="flex space-x-8 mt-2"
+                     >
+                       <div className="flex items-center space-x-2">
+                         <RadioGroupItem value="Yes" id="yes" className="text-sbu-red" />
+                         <Label htmlFor="yes">Yes</Label>
+                       </div>
+                       <div className="flex items-center space-x-2">
+                         <RadioGroupItem value="No" id="no" className="text-sbu-red" />
+                         <Label htmlFor="no">No</Label>
+                       </div>
+                     </RadioGroup>
                   </div>
                   
                   {formData.isStudent === "Yes" ? (
@@ -201,17 +206,44 @@ const BookingSection = () => {
                       </div>
                     </>
                   ) : (
-                    <div>
-                      <Label htmlFor="regularEmail">Email Address</Label>
-                      <Input 
-                        id="regularEmail" 
-                        name="regularEmail"
-                        value={formData.regularEmail}
-                        onChange={handleInputChange}
-                        placeholder="example@email.com" 
-                        className="mt-1"
-                      />
-                    </div>
+                    <>
+                      <div>
+                        <Label htmlFor="regularEmail">Email Address</Label>
+                        <Input 
+                          id="regularEmail" 
+                          name="regularEmail"
+                          value={formData.regularEmail}
+                          onChange={handleInputChange}
+                          placeholder="example@email.com" 
+                          className="mt-1"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                        <Input 
+                          id="dateOfBirth" 
+                          name="dateOfBirth"
+                          type="date"
+                          value={formData.dateOfBirth}
+                          onChange={handleInputChange}
+                          className="mt-1"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="reasonForUse">Reason for Using Lab</Label>
+                        <Textarea 
+                          id="reasonForUse" 
+                          name="reasonForUse"
+                          value={formData.reasonForUse}
+                          onChange={handleInputChange}
+                          placeholder="Please explain why you need to use the lab facilities..."
+                          className="mt-1"
+                          rows={4}
+                        />
+                      </div>
+                    </>
                   )}
                   
                   <Button 
