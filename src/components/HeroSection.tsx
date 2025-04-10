@@ -28,9 +28,8 @@ const HeroSection = () => {
         <p className="text-xl text-white mb-8 max-w-xl animate-slide-in" style={{ animationDelay: '200ms' }}>
           for the next generation of innovative engineers
         </p>
-        <div className="flex space-x-4 animate-slide-in" style={{ animationDelay: '300ms' }}>
+        <div className="animate-slide-in" style={{ animationDelay: '300ms' }}>
           <Button className="bg-sbu-red hover:bg-sbu-darkred text-white">Schedule a Session</Button>
-          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-sbu-red">Learn More</Button>
         </div>
         <div className="mt-12 animate-slide-in" style={{ animationDelay: '400ms' }}>
           <img 
