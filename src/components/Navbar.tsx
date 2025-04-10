@@ -10,11 +10,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img 
-                src="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png" 
-                alt="Stony Brook University Logo" 
-                className="h-8 w-auto"
-              />
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png" 
+                  alt="Stony Brook University Logo" 
+                  className="h-9 w-auto"
+                />
+              </div>
               <span className="ml-3 text-white font-medium">Electrical and Computer Engineering</span>
             </Link>
           </div>
