@@ -31,9 +31,14 @@ const HeroSection = () => {
         <div className="animate-slide-in" style={{ animationDelay: '300ms' }}>
           <Button className="bg-sbu-red hover:bg-sbu-darkred text-white">Schedule a Session</Button>
         </div>
-        <div className="mt-12 animate-slide-in" style={{ animationDelay: '400ms' }}>
+        <div className="mt-12 flex items-center space-x-6 animate-slide-in" style={{ animationDelay: '400ms' }}>
           <img 
-            src="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png" 
+            src="/lovable-uploads/44e08896-ceb9-4d4e-a44b-612315f5b3d2.png" 
+            alt="Stony Brook University Logo" 
+            className="h-16 md:h-20"
+          />
+          <img 
+            src="/lovable-uploads/d0a89636-3952-44ec-b347-d578b260fd86.png" 
             alt="North Atlantic Industries Logo" 
             className="h-16 md:h-20"
           />
