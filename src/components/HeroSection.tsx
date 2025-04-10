@@ -25,6 +25,7 @@ const AnimatedLetters = ({ text, baseDelay = 0 }: { text: string, baseDelay?: nu
 const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
   const lines = [
     "WELCOME TO",
     "NORTH ATLANTIC INDUSTRIES",
@@ -33,33 +34,41 @@ const HeroSection = () => {
   
   useEffect(() => {
     let currentIndex = 0;
-    const interval = setInterval(() => {
-      if (currentIndex <= lines[currentLine].length) {
-        setDisplayText(lines[currentLine].substring(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(interval);
-        
-        // Move to next line or reset to first line
-        setTimeout(() => {
-          if (currentLine < lines.length - 1) {
-            setCurrentLine(prev => prev + 1);
-            setDisplayText("");
-          } else {
-            // Reset after finishing all lines
-            setTimeout(() => {
-              setCurrentLine(0);
+    let typingInterval: number | null = null;
+    
+    if (isTyping) {
+      typingInterval = window.setInterval(() => {
+        if (currentIndex <= lines[currentLine].length) {
+          setDisplayText(lines[currentLine].substring(0, currentIndex));
+          currentIndex++;
+        } else {
+          // Finished typing current line
+          clearInterval(typingInterval as number);
+          
+          // Wait before moving to next line
+          setTimeout(() => {
+            if (currentLine < lines.length - 1) {
+              setCurrentLine(prev => prev + 1);
               setDisplayText("");
-            }, 1500);
-          }
-        }, 1000);
-      }
-    }, 100);
+            } else {
+              // Finished all lines, reset after a pause
+              setTimeout(() => {
+                setCurrentLine(0);
+                setDisplayText("");
+              }, 2000);
+            }
+            currentIndex = 0;
+          }, 1500);
+        }
+      }, 100);
+    }
     
     return () => {
-      clearInterval(interval);
+      if (typingInterval) {
+        clearInterval(typingInterval);
+      }
     };
-  }, [currentLine, displayText]);
+  }, [currentLine, isTyping, lines]);
 
   return (
     <div className="relative bg-gray-900 overflow-hidden">
