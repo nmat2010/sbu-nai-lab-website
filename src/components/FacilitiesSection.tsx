@@ -42,55 +42,40 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
     };
   }, []);
 
-  const contentSection = (
-    <div className="flex flex-col items-start justify-center md:w-1/2 md:pr-4">
-      <div className="flex items-center mb-4 transition-transform duration-300 group-hover:translate-y-[-5px]">
-        <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110">{number}</span>
-        <div className="ml-4 text-gray-600 transition-all duration-300 group-hover:text-sbu-red group-hover:rotate-[5deg]">{icon}</div>
-      </div>
-      <h3 className="facility-title mb-2 transition-all duration-300 group-hover:text-sbu-darkred">{title}</h3>
-      <p className="text-gray-600 mb-4 text-left">{description}</p>
-      {details && <p className="text-gray-500 text-sm text-left">{details}</p>}
-    </div>
-  );
-
-  const imageSection = imageUrl && (
-    <div className="md:w-1/2 h-full flex items-center justify-center overflow-hidden">
-      <div className="w-full transition-all duration-500 group-hover:scale-105">
-        <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg overflow-hidden">
-          <img 
-            src={imageUrl} 
-            alt={title} 
-            className="rounded-lg shadow-md object-contain w-full h-full transition-all duration-500 group-hover:brightness-110"
-          />
-        </AspectRatio>
-      </div>
-    </div>
-  );
-
   return (
     <Card 
       ref={cardRef}
       className={cn(
         "facility-card group transition-all duration-500 hover:shadow-xl hover:-translate-y-1 cursor-pointer bg-white/80 backdrop-blur-sm border border-gray-100",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
-        imageFirst ? "md:flex-row-reverse" : "",
       )}
     >
       <CardContent className={cn(
-        "p-6 flex flex-col md:flex-row items-stretch justify-between gap-6", 
+        "p-6 flex flex-col md:flex-row gap-8", 
         imageFirst ? "md:flex-row-reverse" : ""
       )}>
-        {imageFirst ? (
-          <>
-            {imageSection}
-            {contentSection}
-          </>
-        ) : (
-          <>
-            {contentSection}
-            {imageSection}
-          </>
+        <div className="flex flex-col flex-1 justify-center items-start">
+          <div className="flex items-center mb-4 transition-transform duration-300 group-hover:translate-y-[-5px]">
+            <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110">{number}</span>
+            <div className="ml-4 text-gray-600 transition-all duration-300 group-hover:text-sbu-red group-hover:rotate-[5deg]">{icon}</div>
+          </div>
+          <h3 className="facility-title mb-2 transition-all duration-300 group-hover:text-sbu-darkred">{title}</h3>
+          <p className="text-gray-600 mb-4 text-left">{description}</p>
+          {details && <p className="text-gray-500 text-sm text-left">{details}</p>}
+        </div>
+        
+        {imageUrl && (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="w-full max-w-md transition-all duration-500 group-hover:scale-105">
+              <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src={imageUrl} 
+                  alt={title} 
+                  className="rounded-lg shadow-md object-contain w-full h-full transition-all duration-500 group-hover:brightness-110"
+                />
+              </AspectRatio>
+            </div>
+          </div>
         )}
       </CardContent>
     </Card>
