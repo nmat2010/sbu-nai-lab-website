@@ -24,6 +24,7 @@ const BookingSection = () => {
     fullName: "",
     sbuId: "",
     sbuEmail: "",
+    regularEmail: "",
     isStudent: "Yes"
   });
 
@@ -54,13 +55,25 @@ const BookingSection = () => {
       return;
     }
     
-    if (!formData.fullName || !formData.sbuId || !formData.sbuEmail) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive"
-      });
-      return;
+    // Check required fields based on student status
+    if (formData.isStudent === "Yes") {
+      if (!formData.fullName || !formData.sbuId || !formData.sbuEmail) {
+        toast({
+          title: "Missing Information",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
+    } else {
+      if (!formData.fullName || !formData.regularEmail) {
+        toast({
+          title: "Missing Information",
+          description: "Please fill in all required fields.",
+          variant: "destructive"
+        });
+        return;
+      }
     }
     
     // In a real application, this would submit to an API
@@ -76,6 +89,7 @@ const BookingSection = () => {
       fullName: "",
       sbuId: "",
       sbuEmail: "",
+      regularEmail: "",
       isStudent: "Yes"
     });
   };
@@ -142,30 +156,6 @@ const BookingSection = () => {
                   </div>
                   
                   <div>
-                    <Label htmlFor="sbuId">SBU ID</Label>
-                    <Input 
-                      id="sbuId" 
-                      name="sbuId"
-                      value={formData.sbuId}
-                      onChange={handleInputChange}
-                      placeholder="123456789" 
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="sbuEmail">SBU Email</Label>
-                    <Input 
-                      id="sbuEmail" 
-                      name="sbuEmail"
-                      value={formData.sbuEmail}
-                      onChange={handleInputChange}
-                      placeholder="thu.nguyen@stonybrook.edu" 
-                      className="mt-1"
-                    />
-                  </div>
-                  
-                  <div>
                     <Label>SBU Student</Label>
                     <RadioGroup 
                       defaultValue="Yes" 
@@ -183,6 +173,46 @@ const BookingSection = () => {
                       </div>
                     </RadioGroup>
                   </div>
+                  
+                  {formData.isStudent === "Yes" ? (
+                    <>
+                      <div>
+                        <Label htmlFor="sbuId">SBU ID</Label>
+                        <Input 
+                          id="sbuId" 
+                          name="sbuId"
+                          value={formData.sbuId}
+                          onChange={handleInputChange}
+                          placeholder="123456789" 
+                          className="mt-1"
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="sbuEmail">SBU Email</Label>
+                        <Input 
+                          id="sbuEmail" 
+                          name="sbuEmail"
+                          value={formData.sbuEmail}
+                          onChange={handleInputChange}
+                          placeholder="thu.nguyen@stonybrook.edu" 
+                          className="mt-1"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <div>
+                      <Label htmlFor="regularEmail">Email Address</Label>
+                      <Input 
+                        id="regularEmail" 
+                        name="regularEmail"
+                        value={formData.regularEmail}
+                        onChange={handleInputChange}
+                        placeholder="example@email.com" 
+                        className="mt-1"
+                      />
+                    </div>
+                  )}
                   
                   <Button 
                     type="submit" 
