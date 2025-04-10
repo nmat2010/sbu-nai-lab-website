@@ -8,18 +8,18 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 animate-fade-in" style={{ animationDelay: '200ms' }}>
-            <h2 className="text-4xl font-bold text-sbu-red mb-6 leading-tight">About Our Lab</h2>
+            <h2 className="text-4xl font-bold text-gradient mb-6 leading-tight letter-spacing-wide">About Our Lab</h2>
             <p className="text-lg font-medium text-gray-800 mb-6">
               The NAI Engineering Teaching Lab is a new combined teaching and laboratory space in the Light Engineering Building.
             </p>
             <div className="space-y-4 text-gray-600">
-              <p>
+              <p className="animate-fade-in-up" style={{ animationDelay: '300ms' }}>
                 The laboratory will be used by Stony Brook's current Electrical and Computer Engineering students, and will also be used as part of the University's outreach activity to expose middle and high school students to electrical and computer engineering topics.
               </p>
-              <p>
+              <p className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
                 Visiting grade school students experiment with electricity and build circuits during day-long field trips to the University, getting hands-on experience with cutting-edge equipment.
               </p>
-              <p>
+              <p className="animate-fade-in-up" style={{ animationDelay: '500ms' }}>
                 The lab was made possible through the generous support of North Atlantic Industries, demonstrating their commitment to the future of engineering education.
               </p>
             </div>

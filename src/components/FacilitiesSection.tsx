@@ -58,11 +58,11 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
           {/* Text Content Section */}
           <div className="flex flex-col justify-center flex-1">
             <div className="flex items-center mb-4 transition-transform duration-300 group-hover:translate-y-[-5px]">
-              <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110">{number}</span>
+              <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110 text-3d">{number}</span>
               <div className="ml-4 text-gray-600 transition-all duration-300 group-hover:text-sbu-red group-hover:rotate-[5deg]">{icon}</div>
             </div>
-            <h3 className="facility-title mb-2 transition-all duration-300 group-hover:text-sbu-darkred text-left">{title}</h3>
-            <p className="text-gray-600 mb-4 text-left">{description}</p>
+            <h3 className="facility-title mb-2 transition-all duration-300 group-hover:text-sbu-darkred text-left text-gradient letter-spacing-wide">{title}</h3>
+            <p className="text-gray-600 mb-4 text-left animate-fade-in-up">{description}</p>
             {details && <p className="text-gray-500 text-sm text-left">{details}</p>}
           </div>
           
@@ -90,7 +90,7 @@ const FacilitiesSection = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Lab Facilities</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center text-gradient letter-spacing-wide">Lab Facilities</h2>
         
         <div className="space-y-12">
           <FacilityCard 
