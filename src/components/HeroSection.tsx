@@ -7,9 +7,9 @@ const HeroSection = () => {
     <div className="relative bg-gray-900 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png"
+          src="/lovable-uploads/77ce2bb2-4259-4af6-8411-13241b7b30df.png"
           alt="Engineering Lab"
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
       </div>
