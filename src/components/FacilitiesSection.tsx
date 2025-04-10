@@ -43,7 +43,7 @@ const FacilitiesSection = () => {
             description="State-of-the-art equipment for electrical engineering experiments and testing."
             icon={<FlaskConical size={28} />}
             details="including touchscreen oscilloscope, a 6½ digit multimeter, a triple power supply"
-            imageUrl="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png"
+            imageUrl="/lovable-uploads/8858bd5e-696d-46a2-b19b-65c7c0629bd7.png"
           />
           
           <FacilityCard 
