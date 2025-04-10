@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +23,30 @@ const AnimatedLetters = ({ text, baseDelay = 0 }: { text: string, baseDelay?: nu
 };
 
 const HeroSection = () => {
+  const [displayTitle, setDisplayTitle] = useState("");
+  const fullTitle = "WELCOME TO";
+  
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= fullTitle.length) {
+        setDisplayTitle(fullTitle.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+        // Reset after a pause to restart the animation
+        setTimeout(() => {
+          setDisplayTitle("");
+          currentIndex = 0;
+        }, 2000);
+      }
+    }, 150);
+    
+    return () => {
+      clearInterval(interval);
+    };
+  }, [displayTitle]);
+
   return (
     <div className="relative bg-gray-900 overflow-hidden">
       <div className="absolute inset-0">
@@ -35,7 +59,10 @@ const HeroSection = () => {
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-start justify-center h-[500px]">
         <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl mb-4 animate-fade-in text-shadow-subtle">
-          <AnimatedLetters text="WELCOME TO" />
+          <span className="inline-block running-text">
+            {displayTitle}
+            <span className="animate-blink">|</span>
+          </span>
         </h1>
         <div className="animate-slide-in">
           <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl mb-2 text-gradient letter-spacing-wide">
