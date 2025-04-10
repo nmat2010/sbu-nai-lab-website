@@ -2,38 +2,55 @@
 import React from 'react';
 import { Printer, CircuitBoard, FlaskConical } from 'lucide-react';
 import { AspectRatio } from './ui/aspect-ratio';
+import { cn } from "@/lib/utils";
 
-const FacilityCard = ({ number, title, description, icon, details, imageUrl }: {
+const FacilityCard = ({ number, title, description, icon, details, imageUrl, imageFirst = false }: {
   number: number;
   title: string;
   description: string;
   icon: React.ReactNode;
   details?: string;
   imageUrl?: string;
+  imageFirst?: boolean;
 }) => {
-  return (
-    <div className="facility-card">
-      <div className="flex flex-col items-center md:items-start md:w-1/2">
-        <div className="flex items-center mb-4">
-          <span className="facility-number">{number}</span>
-          <div className="ml-4 text-gray-600">{icon}</div>
-        </div>
-        <h3 className="facility-title mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4 text-center md:text-left">{description}</p>
-        {details && <p className="text-gray-500 text-sm">{details}</p>}
+  const contentSection = (
+    <div className="flex flex-col items-center md:items-start md:w-1/2">
+      <div className="flex items-center mb-4">
+        <span className="facility-number">{number}</span>
+        <div className="ml-4 text-gray-600">{icon}</div>
       </div>
-      {imageUrl && (
-        <div className="md:w-1/2 h-full flex items-center justify-center">
-          <div className="w-full max-w-md overflow-hidden">
-            <AspectRatio ratio={16 / 9} className="bg-muted">
-              <img 
-                src={imageUrl} 
-                alt={title} 
-                className="rounded-lg shadow-md object-cover w-full h-full"
-              />
-            </AspectRatio>
-          </div>
-        </div>
+      <h3 className="facility-title mb-2">{title}</h3>
+      <p className="text-gray-600 mb-4 text-center md:text-left">{description}</p>
+      {details && <p className="text-gray-500 text-sm">{details}</p>}
+    </div>
+  );
+
+  const imageSection = imageUrl && (
+    <div className="md:w-1/2 h-full flex items-center justify-center">
+      <div className="w-full max-w-md overflow-hidden">
+        <AspectRatio ratio={4 / 3} className="bg-muted">
+          <img 
+            src={imageUrl} 
+            alt={title} 
+            className="rounded-lg shadow-md object-contain w-full h-full"
+          />
+        </AspectRatio>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={cn("facility-card", imageFirst ? "md:flex-row-reverse" : "")}>
+      {imageFirst ? (
+        <>
+          {imageSection}
+          {contentSection}
+        </>
+      ) : (
+        <>
+          {contentSection}
+          {imageSection}
+        </>
       )}
     </div>
   );
@@ -62,6 +79,7 @@ const FacilitiesSection = () => {
             icon={<Printer size={28} />}
             details="3D printers allows students go from sketch to completed part in just a few hours."
             imageUrl="/lovable-uploads/7936e31f-b3d2-4b6f-ab06-9fa5530ee208.png"
+            imageFirst={true}
           />
           
           <FacilityCard 
