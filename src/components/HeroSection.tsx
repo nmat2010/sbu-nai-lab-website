@@ -11,7 +11,7 @@ const HeroSection = () => {
           alt="Engineering Lab"
           className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-start justify-center h-[500px]">
         <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl mb-4 animate-fade-in">
