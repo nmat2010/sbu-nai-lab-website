@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -9,9 +10,9 @@ const HeroSection = () => {
         <img
           src="/lovable-uploads/77ce2bb2-4259-4af6-8411-13241b7b30df.png"
           alt="Engineering Lab"
-          className="w-full h-full object-cover opacity-70"
+          className="w-full h-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-start justify-center h-[500px]">
         <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl mb-4 animate-fade-in">
@@ -29,7 +30,9 @@ const HeroSection = () => {
           for the next generation of innovative engineers
         </p>
         <div className="animate-slide-in" style={{ animationDelay: '300ms' }}>
-          <Button className="bg-sbu-red hover:bg-sbu-darkred text-white">Schedule a Session</Button>
+          <Link to="/schedule">
+            <Button className="bg-sbu-red hover:bg-sbu-darkred text-white font-semibold">Schedule a Session</Button>
+          </Link>
         </div>
         <div className="mt-12 flex items-center space-x-6 animate-slide-in" style={{ animationDelay: '400ms' }}>
           <img 
