@@ -12,7 +12,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png" 
+                  src="/lovable-uploads/528dd9fd-488b-47dc-838b-3c797e9dff4a.png" 
                   alt="Stony Brook University Logo" 
                   className="h-9 w-auto"
                 />
