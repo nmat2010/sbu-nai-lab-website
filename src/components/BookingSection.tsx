@@ -155,7 +155,7 @@ const BookingSection = () => {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      placeholder="Thu Nguyen" 
+                      placeholder="Sea Wolf" 
                       className="mt-1"
                     />
                   </div>
@@ -200,7 +200,7 @@ const BookingSection = () => {
                           name="sbuEmail"
                           value={formData.sbuEmail}
                           onChange={handleInputChange}
-                          placeholder="thu.nguyen@stonybrook.edu" 
+                          placeholder="sea.wolf@stonybrook.edu" 
                           className="mt-1"
                         />
                       </div>
