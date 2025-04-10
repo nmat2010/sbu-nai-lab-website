@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Printer3d, CircuitBoard, FlaskConical } from 'lucide-react';
+import { Printer, CircuitBoard, FlaskConical } from 'lucide-react';
 
 const FacilityCard = ({ number, title, description, icon, details, imageUrl }: {
   number: number;
@@ -50,7 +50,7 @@ const FacilitiesSection = () => {
             number={8}
             title="3D Printers"
             description="Latest 3D printing technology for rapid prototyping and design projects."
-            icon={<Printer3d size={28} />}
+            icon={<Printer size={28} />}
             details="3D printers allows students go from sketch to completed part in just a few hours."
             imageUrl="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png"
           />
