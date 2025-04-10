@@ -70,11 +70,11 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
           {imageUrl && (
             <div className="flex items-center justify-center flex-1">
               <div className="w-full transition-all duration-500 group-hover:scale-105">
-                <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg overflow-hidden">
+                <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg overflow-hidden">
                   <img 
                     src={imageUrl} 
                     alt={title} 
-                    className="rounded-lg shadow-md object-cover w-full h-full transition-all duration-500 group-hover:brightness-110"
+                    className="rounded-lg shadow-md object-contain w-full h-full transition-all duration-500 group-hover:brightness-110"
                   />
                 </AspectRatio>
               </div>
