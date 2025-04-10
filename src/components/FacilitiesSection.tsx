@@ -50,13 +50,13 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
       )}
     >
-      <CardContent className={cn(
-        "p-6 md:p-8", 
-        imageFirst ? "md:flex-row-reverse" : ""
-      )}>
-        <div className="flex flex-col md:flex-row w-full justify-between gap-8">
-          {/* Text Content Section - Always Left Aligned */}
-          <div className="flex flex-col justify-center max-w-md">
+      <CardContent className="p-6 md:p-8">
+        <div className={cn(
+          "flex flex-col md:flex-row w-full justify-between gap-8",
+          imageFirst ? "md:flex-row-reverse" : ""
+        )}>
+          {/* Text Content Section */}
+          <div className="flex flex-col justify-center md:max-w-xs lg:max-w-sm">
             <div className="flex items-center mb-4 transition-transform duration-300 group-hover:translate-y-[-5px]">
               <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110">{number}</span>
               <div className="ml-4 text-gray-600 transition-all duration-300 group-hover:text-sbu-red group-hover:rotate-[5deg]">{icon}</div>
@@ -66,10 +66,10 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
             {details && <p className="text-gray-500 text-sm text-left">{details}</p>}
           </div>
           
-          {/* Image Section - Always Right Aligned */}
+          {/* Image Section */}
           {imageUrl && (
-            <div className="flex items-center justify-center md:justify-end">
-              <div className="w-full max-w-sm transition-all duration-500 group-hover:scale-105">
+            <div className="flex items-center justify-center md:w-1/2">
+              <div className="w-full max-w-md transition-all duration-500 group-hover:scale-105">
                 <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg overflow-hidden">
                   <img 
                     src={imageUrl} 
