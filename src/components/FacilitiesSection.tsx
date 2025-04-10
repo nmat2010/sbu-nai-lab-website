@@ -43,20 +43,20 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
   }, []);
 
   const contentSection = (
-    <div className="flex flex-col items-center md:items-start md:w-1/2">
+    <div className="flex flex-col items-start justify-center md:w-1/2 md:pr-4">
       <div className="flex items-center mb-4 transition-transform duration-300 group-hover:translate-y-[-5px]">
         <span className="facility-number transition-all duration-300 group-hover:text-sbu-darkred group-hover:scale-110">{number}</span>
         <div className="ml-4 text-gray-600 transition-all duration-300 group-hover:text-sbu-red group-hover:rotate-[5deg]">{icon}</div>
       </div>
       <h3 className="facility-title mb-2 transition-all duration-300 group-hover:text-sbu-darkred">{title}</h3>
-      <p className="text-gray-600 mb-4 text-center md:text-left">{description}</p>
-      {details && <p className="text-gray-500 text-sm">{details}</p>}
+      <p className="text-gray-600 mb-4 text-left">{description}</p>
+      {details && <p className="text-gray-500 text-sm text-left">{details}</p>}
     </div>
   );
 
   const imageSection = imageUrl && (
     <div className="md:w-1/2 h-full flex items-center justify-center overflow-hidden">
-      <div className="w-full max-w-md transition-all duration-500 group-hover:scale-105">
+      <div className="w-full transition-all duration-500 group-hover:scale-105">
         <AspectRatio ratio={4 / 3} className="bg-muted rounded-lg overflow-hidden">
           <img 
             src={imageUrl} 
@@ -77,7 +77,10 @@ const FacilityCard = ({ number, title, description, icon, details, imageUrl, ima
         imageFirst ? "md:flex-row-reverse" : "",
       )}
     >
-      <CardContent className={cn("p-6 flex flex-col md:flex-row items-center gap-6", imageFirst ? "md:flex-row-reverse" : "")}>
+      <CardContent className={cn(
+        "p-6 flex flex-col md:flex-row items-stretch justify-between gap-6", 
+        imageFirst ? "md:flex-row-reverse" : ""
+      )}>
         {imageFirst ? (
           <>
             {imageSection}
