@@ -52,7 +52,7 @@ const FacilitiesSection = () => {
             description="Latest 3D printing technology for rapid prototyping and design projects."
             icon={<Printer size={28} />}
             details="3D printers allows students go from sketch to completed part in just a few hours."
-            imageUrl="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png"
+            imageUrl="/lovable-uploads/7936e31f-b3d2-4b6f-ab06-9fa5530ee208.png"
           />
           
           <FacilityCard 
