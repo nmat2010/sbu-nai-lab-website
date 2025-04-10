@@ -88,7 +88,7 @@ const FacilitiesSection = () => {
             description="Fully equipped workstations for circuit design, assembly, and testing."
             icon={<CircuitBoard size={28} />}
             details="including a temperature controlled soldering iron and hand tools"
-            imageUrl="/lovable-uploads/349af6f0-57a1-4871-ab78-dc65f6e2c82a.png"
+            imageUrl="/lovable-uploads/8ff3eaf7-0cbd-4e79-a602-865b178af0fe.png"
           />
         </div>
       </div>
